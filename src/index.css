@@ -1,0 +1,164 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* MindCare Design System - Calming Mental Health Palette */
+@layer base {
+  :root {
+    /* Core semantic colors */
+    --background: 252 255 255;
+    --foreground: 210 24% 16%;
+
+    /* Brand colors - calming blues and teals */
+    --primary: 210 100% 56%;
+    --primary-foreground: 0 0% 100%;
+    --primary-light: 210 100% 85%;
+    --primary-glow: 210 100% 70%;
+
+    /* Secondary - soft greens for wellness */
+    --secondary: 142 69% 58%;
+    --secondary-foreground: 0 0% 100%;
+    --secondary-light: 142 69% 85%;
+
+    /* Accent - gentle purples */
+    --accent: 270 50% 65%;
+    --accent-foreground: 0 0% 100%;
+    --accent-light: 270 50% 85%;
+
+    /* Neutral system */
+    --card: 0 0% 100%;
+    --card-foreground: 210 24% 16%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 210 24% 16%;
+    --muted: 210 40% 96%;
+    --muted-foreground: 210 16% 46%;
+    --border: 214 31% 91%;
+    --input: 214 31% 91%;
+    --ring: 210 100% 56%;
+
+    /* Status colors */
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    --success: 142 69% 58%;
+    --warning: 38 92% 50%;
+
+    /* Design tokens */
+    --radius: 12px;
+    --shadow-soft: 0 4px 20px -2px hsl(210 100% 56% / 0.1);
+    --shadow-glow: 0 8px 30px -5px hsl(210 100% 56% / 0.2);
+    --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-glow)));
+    --gradient-secondary: linear-gradient(135deg, hsl(var(--secondary)), hsl(var(--secondary-light)));
+    --gradient-hero: linear-gradient(135deg, hsl(var(--primary-light)), hsl(var(--accent-light)), hsl(var(--secondary-light)));
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 210 24% 8%;
+    --foreground: 0 0% 95%;
+    --card: 210 24% 10%;
+    --card-foreground: 0 0% 95%;
+    --popover: 210 24% 8%;
+    --popover-foreground: 0 0% 95%;
+    --primary: 210 100% 70%;
+    --primary-foreground: 210 24% 8%;
+    --secondary: 142 69% 70%;
+    --secondary-foreground: 210 24% 8%;
+    --accent: 270 50% 75%;
+    --accent-foreground: 210 24% 8%;
+    --muted: 210 24% 12%;
+    --muted-foreground: 210 16% 65%;
+    --border: 210 24% 15%;
+    --input: 210 24% 15%;
+    --ring: 210 100% 70%;
+
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Poppins', sans-serif;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer components {
+  /* Hero section styles */
+  .hero-gradient {
+    background: var(--gradient-hero);
+  }
+
+  /* Glass morphism effect */
+  .glass {
+    backdrop-filter: blur(10px);
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  /* Floating animation */
+  .float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-20px) rotate(1deg); }
+  }
+
+  /* Hover lift effect */
+  .hover-lift {
+    transition: var(--transition-smooth);
+  }
+  
+  .hover-lift:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-glow);
+  }
+
+  /* Pulse animation for CTAs */
+  .pulse-glow {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .pulse-glow::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+    animation: shine 3s infinite;
+  }
+  
+  @keyframes shine {
+    0% { left: -100%; }
+    100% { left: 100%; }
+  }
+}
